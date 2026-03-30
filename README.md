@@ -41,8 +41,8 @@ REST API (Spring Boot)
 
 ## Tech Stack
 
-- **Java 21** — virtual threads for worker concurrency
-- **Spring Boot 3** — web, JPA, Kafka, Redis, Cassandra
+- **Java 25** — virtual threads for worker concurrency
+- **Spring Boot 4.0.5** — web, JPA, Kafka, Redis, Cassandra
 - **PostgreSQL 16** — primary data store
 - **Apache Kafka** — message broker
 - **Redis** — scheduling buffer (sorted sets)
