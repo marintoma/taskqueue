@@ -1,6 +1,7 @@
 package com.marintoma.taskqueue.dtos;
 
 import com.marintoma.taskqueue.enums.TaskType;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 public record TaskDefinitionRequest(
@@ -22,6 +23,12 @@ public record TaskDefinitionRequest(
 
         @Min(value = 1000, message = "Timeout must be at least 1000ms")
         @Max(value = 300000, message = "Timeout cannot exceed 300000ms")
-        Long timeoutMs
+        Long timeoutMs,
+
+        @Valid
+        WebhookConfig webhookConfig,
+
+        @Valid
+        ExecutorConfig executorConfig
 ) {
 }

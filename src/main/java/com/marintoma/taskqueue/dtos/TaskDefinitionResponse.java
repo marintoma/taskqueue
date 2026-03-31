@@ -13,6 +13,8 @@ public record TaskDefinitionResponse(
         TaskType taskType,
         int maxRetries,
         long timeoutMs,
+        WebhookConfig webhookConfig,
+        ExecutorConfig executorConfig,
         Instant createdAt,
         Instant updatedAt
 ) {
@@ -24,6 +26,8 @@ public record TaskDefinitionResponse(
                 taskDefinition.getTaskType(),
                 taskDefinition.getMaxRetries(),
                 taskDefinition.getTimeoutMs(),
+                taskDefinition.getWebhookConfig(),
+                taskDefinition.getExecutorConfig(),
                 taskDefinition.getCreatedAt(),
                 taskDefinition.getUpdatedAt()
         );

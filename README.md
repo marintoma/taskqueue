@@ -75,7 +75,7 @@ Tenant-based Kafka partition routing. Noisy neighbor protection — one tenant's
 
 ## Running Locally
 
-**Prerequisites:** Docker, Java 21, Maven
+**Prerequisites:** Docker, Java 25, Maven
 
 ```bash
 # start infrastructure

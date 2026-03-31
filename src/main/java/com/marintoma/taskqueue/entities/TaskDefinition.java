@@ -1,5 +1,7 @@
 package com.marintoma.taskqueue.entities;
 
+import com.marintoma.taskqueue.dtos.ExecutorConfig;
+import com.marintoma.taskqueue.dtos.WebhookConfig;
 import com.marintoma.taskqueue.enums.TaskType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -38,6 +40,14 @@ public class TaskDefinition {
 
     @Column(nullable = false)
     private long timeoutMs = 30000;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private WebhookConfig webhookConfig;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private ExecutorConfig executorConfig;
 
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
