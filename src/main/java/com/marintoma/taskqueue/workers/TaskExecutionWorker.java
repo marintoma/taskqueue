@@ -64,7 +64,12 @@ public class TaskExecutionWorker {
     private void markFailed(TaskExecution execution, String error) {
         execution.setStatus(ExecutionStatus.FAILED);
         execution.setCompletedAt(Instant.now());
-        execution.setLastError(error);
+        execution.setLastError(truncate(error, 500));
         execRepo.save(execution);
+    }
+
+    private String truncate(String value, int maxLength) {
+        if (value == null) return null;
+        return value.length() <= maxLength ? value : value.substring(0, maxLength) + "... (truncated)";
     }
 }
