@@ -55,7 +55,7 @@ REST API (Spring Boot)
 ### v0.1 — Foundation ✅
 Task Management Service with PostgreSQL. REST API for creating task definitions and scheduling executions. Full data model with Flyway migrations, input validation, global error handling, and DTO mapping.
 
-### v0.2 — Basic Execution
+### v0.2 — Basic Execution ✅
 Kafka integration and Worker nodes. End-to-end job execution — submit a task, watch it run. PostgreSQL status updates via the worker.
 
 ### v0.3 — Scheduling
