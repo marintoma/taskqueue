@@ -5,6 +5,7 @@ import com.marintoma.taskqueue.dtos.TaskExecutionResponse;
 import com.marintoma.taskqueue.entities.TaskDefinition;
 import com.marintoma.taskqueue.entities.TaskExecution;
 import com.marintoma.taskqueue.enums.ExecutionStatus;
+import com.marintoma.taskqueue.messaging.TaskExecutionProducer;
 import com.marintoma.taskqueue.repositories.TaskDefinitionRepository;
 import com.marintoma.taskqueue.repositories.TaskExecutionRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -23,6 +24,7 @@ public class TaskExecutionServiceImpl implements TaskExecutionService {
 
     private final TaskExecutionRepository execRepo;
     private final TaskDefinitionRepository defRepo;
+    private final TaskExecutionProducer producer;
 
     @Override
     @Transactional
@@ -38,6 +40,9 @@ public class TaskExecutionServiceImpl implements TaskExecutionService {
         taskExecution.setStatus(ExecutionStatus.PENDING);
 
         TaskExecution result = execRepo.save(taskExecution);
+
+        // publish the event to kafka
+        producer.publish(result.getId(), definition.getId());
 
         return TaskExecutionResponse.from(result);
     }

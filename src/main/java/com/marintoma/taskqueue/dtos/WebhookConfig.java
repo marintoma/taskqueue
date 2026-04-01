@@ -2,6 +2,7 @@ package com.marintoma.taskqueue.dtos;
 
 import com.marintoma.taskqueue.enums.HttpMethod;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public record WebhookConfig(
         @Pattern(regexp = "https?://.*", message = "URL must start with http:// or https://")
         String url,
 
-        @NotBlank(message = "HTTP method is required")
+        @NotNull(message = "HTTP method is required")
         HttpMethod method,
 
         Map<String, String> headers,
